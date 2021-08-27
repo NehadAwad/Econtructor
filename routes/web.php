@@ -32,9 +32,14 @@ Route::middleware(['auth:sanctum,admin', 'verified'])->prefix('admin')->name('ad
     //dashboard page
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('home');
     
-    //add product
+    //product
     Route::get('/add_product', [AdminController::class, 'addProduct'])->name('addProduct');
     Route::post('/add_product_post', [AdminController::class, 'addProductPost'])->name('addProductPost');
+    //all product
+    Route::get('/all_product', [AdminController::class, 'allProduct'])->name('allProduct');
+    //product edit
+    Route::get('/edit_product/{slug}', [AdminController::class, 'editProduct'])->name('editProduct');
+    Route::post('/edit_product_post/{slug}', [AdminController::class, 'editProductPost'])->name('editProductPost');
 
 
 });

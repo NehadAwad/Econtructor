@@ -48,6 +48,15 @@
                 </a>
                 
                 </li>
+
+                <li class="nav-item">
+                    <a href="/admin/all_product" class="nav-link  {{(request()->is('admin/all_admin')?'active': request()->is('admin/create_admin'))?'active':'' }}">
+                        <i class="nav-icon far fa-money-bill-alt "></i>
+                        <p>
+                        All Product                  
+                        </p>
+                    </a>             
+                    </li>
                   
                 
 

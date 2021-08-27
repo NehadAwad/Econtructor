@@ -127,7 +127,7 @@ class AdminController extends Controller
     public function addProduct(){
         return view('admin.product.add_product');
     }
-
+    
     public function addProductPost(Request $request){
 
         $product = new Product;
@@ -147,5 +147,36 @@ class AdminController extends Controller
         $product->save();
         return view('admin.product.add_product');
 
+    }
+
+    
+    public function allProduct(){
+        $products = Product::all();
+        return view('admin.product.all_product', compact('products'));
+    }
+
+    public function editProduct($slug){
+        $product = Product::find($slug);
+        //dd("ok");
+        return view('admin.product.edit_product', compact('product'));
+    }
+
+    public function editProductPost(Request $request,$slug){
+        $product = Product::find($slug);
+        $product->product_weight = $request->product_weight;
+        $product->product_name = $request->product_name;
+        $product->product_price = $request->product_price;
+        $product->product_quantity = $request->product_quantity;
+        $product->pre_order_status = $request->pre_order_status;
+        if($request->hasfile('product_img'))
+        {
+            $file = $request->file('product_img');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time().".".$extension;
+            $file->move("Upload_image/", $filename);
+            $product->product_img_path = $filename;
+        }   
+        $product->save();
+        return view('admin.product.edit_product', compact('product'));
     }
 }
