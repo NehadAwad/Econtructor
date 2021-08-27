@@ -19,6 +19,7 @@
                       <th>Product Price</th>
                       <th>Product Quantity</th>
                       <th>Preorder Status</th>
+                      <th>Image</th>
                       <th>Action</th>
                     </tr>
                     </thead>
@@ -30,6 +31,10 @@
                         <td>{{ $product->product_price }}</td>
                         <td>{{ $product->product_quantity }}</td>
                         <td>{{ $product->pre_order_status }}</td>
+                        <td><img class="profile-user-img img-fluid img-circle"
+                          src="{{ (!empty($product->product_img_path))?url('Upload_image/'
+                          .$product->product_img_path):url('storage/profile-photos/8o0QK4BIs6SkJESuPhm1N7adEo2eEG7HaIU224Yi.jpg') }}"
+                          alt="User profile picture"></td>
                         <td><a href="/admin/edit_product/{{ $product->id }}"><button>Edit</button></a></td>
                       </tr>
                     @endforeach
