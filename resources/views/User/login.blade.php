@@ -3,7 +3,8 @@
         <x-slot name="logo">
             <x-jet-authentication-card-logo />
         </x-slot>
-        <div><h1 style="font-size: 28px">Admin Login</h1></div>
+        <div><h1 style="font-size: 28px">User Login</h1></div>
+
         <x-jet-validation-errors class="mb-4" />
 
         @if (session('status'))
@@ -44,7 +45,15 @@
                     {{ __('Log in') }}
                 </x-jet-button>
             </div>
-
+            <div class="flex items-center justify-end mt-4">
+                
+                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="admin/login">
+                    {{ __('Admin Login') }}
+                </a>
+            </div>
+            <div>
+                <a href="http://127.0.0.1:8000/register"> <button type="button">Registration</button> </a>
+            </div>
 
         </form>
         
