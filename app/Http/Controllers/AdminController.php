@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Offer;
+use App\Models\User;
 use Illuminate\Contracts\Auth\StatefulGuard;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -149,11 +151,12 @@ class AdminController extends Controller
 
     }
 
-    
+    //------------ edit product page ------------//
     public function allProduct(){
         $products = Product::all();
         return view('admin.product.all_product', compact('products'));
     }
+
 
     public function editProduct($slug){
         $product = Product::find($slug);
@@ -178,5 +181,20 @@ class AdminController extends Controller
         }   
         $product->save();
         return view('admin.product.edit_product', compact('product'));
+    }
+
+
+    //------------ offer page ------------//
+    public function offerIndex(){
+        $offer = Offer::find(1);
+        return view('admin.offer.offer', compact('offer'));
+    }
+
+    public function edit_offer_post(Request $request){
+        $offer = Offer::find(1);
+        $offer->offer_status = $request->offer_status;
+        $offer->offer_quantity = $request->offer_quantity;
+        $offer->save();
+        return view('admin.offer.offer', compact('offer'));
     }
 }

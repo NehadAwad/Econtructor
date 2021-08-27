@@ -35,7 +35,7 @@
                           src="{{ (!empty($product->product_img_path))?url('Upload_image/'
                           .$product->product_img_path):url('storage/profile-photos/8o0QK4BIs6SkJESuPhm1N7adEo2eEG7HaIU224Yi.jpg') }}"
                           alt="User profile picture"></td>
-                        <td><a href="/admin/edit_product/{{ $product->id }}"><button>Edit</button></a></td>
+                        <td><a href="/admin/edit_product/{{ $product->id }}"><button type="button" class="btn btn-info">Edit</button></a></td>
                       </tr>
                     @endforeach
                     

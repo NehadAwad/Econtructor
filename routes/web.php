@@ -41,6 +41,11 @@ Route::middleware(['auth:sanctum,admin', 'verified'])->prefix('admin')->name('ad
     Route::get('/edit_product/{slug}', [AdminController::class, 'editProduct'])->name('editProduct');
     Route::post('/edit_product_post/{slug}', [AdminController::class, 'editProductPost'])->name('editProductPost');
 
+    //offer
+    Route::get('/offer', [AdminController::class, 'offerIndex'])->name('offer');
+    Route::post('/edit_offer_post', [AdminController::class, 'edit_offer_post'])->name('editOffer');
+
+
 
 });
 

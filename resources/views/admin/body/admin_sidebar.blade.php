@@ -40,7 +40,7 @@
 
                 
                 <li class="nav-item">
-                <a href="/admin/add_product" class="nav-link  {{(request()->is('admin/all_admin')?'active': request()->is('admin/create_admin'))?'active':'' }}">
+                <a href="/admin/add_product" class="nav-link  {{(request()->is('/admin/add_product')?'active': request()->is('/admin/add_product'))?'active':'' }}">
                     <i class="nav-icon far fa-money-bill-alt "></i>
                     <p>
                     Add Product                  
@@ -50,13 +50,21 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="/admin/all_product" class="nav-link  {{(request()->is('admin/all_admin')?'active': request()->is('admin/create_admin'))?'active':'' }}">
+                    <a href="/admin/all_product" class="nav-link  {{(request()->is('/admin/all_product')?'active': request()->is('admin/all_product'))?'active':'' }}">
                         <i class="nav-icon far fa-money-bill-alt "></i>
                         <p>
                         All Product                  
                         </p>
                     </a>             
-                    </li>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/offer" class="nav-link  {{(request()->is('/admin/offer')?'active': request()->is('/admin/offer'))?'active':'' }}">
+                        <i class="nav-icon far fa-money-bill-alt "></i>
+                        <p>
+                        Offer                  
+                        </p>
+                    </a>             
+                </li>
                   
                 
 
