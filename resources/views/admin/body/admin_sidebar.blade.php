@@ -1,7 +1,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="{{route('admin.home')}}" class="brand-link text-center ">
-        <img src="{{ asset('backend/dist/img/logo_full.gif') }}" alt="AdminLTE Logo" class="brand-image pl-3  elevation-3" style="opacity: .8">
+        
         <br><span class="brand-text font-weight-light"></span>
     </a>
 
@@ -40,7 +40,7 @@
 
                 
                 <li class="nav-item">
-                <a href="" class="nav-link  {{(request()->is('admin/all_admin')?'active': request()->is('admin/create_admin'))?'active':'' }}">
+                <a href="/admin/add_product" class="nav-link  {{(request()->is('admin/all_admin')?'active': request()->is('admin/create_admin'))?'active':'' }}">
                     <i class="nav-icon far fa-money-bill-alt "></i>
                     <p>
                     Add Product                  

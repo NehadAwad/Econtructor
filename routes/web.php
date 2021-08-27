@@ -27,13 +27,14 @@ Route::group(['prefix' => 'admin', 'middleware'=> ['admin:admin']], function(){
 
 
 
-
+// Admin 
 Route::middleware(['auth:sanctum,admin', 'verified'])->prefix('admin')->name('admin.')->group(function(){
-    Route::get('/dashboard', function () {
-        return view('admin.index');
-    })->name('home');
-
+    //dashboard page
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('home');
     
+    //add product
+    Route::get('/add_product', [AdminController::class, 'addProduct'])->name('addProduct');
+    Route::post('/add_product_post', [AdminController::class, 'addProductPost'])->name('addProductPost');
 
 
 });

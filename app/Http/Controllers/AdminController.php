@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Contracts\Auth\StatefulGuard;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -16,6 +17,10 @@ use Laravel\Fortify\Contracts\LogoutResponse;
 use Laravel\Fortify\Features;
 use Laravel\Fortify\Fortify;
 use Laravel\Fortify\Http\Requests\LoginRequest;
+use Intervention\Image\Facades\Image;
+use App\Http\Controllers\Throwable;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -110,5 +115,37 @@ class AdminController extends Controller
         $request->session()->regenerateToken();
 
         return app(LogoutResponse::class);
+    }
+
+    //------------ dashboard page ------------//
+    public function dashboard(){
+        return view('admin.index');
+    }
+
+
+    //------------ add product page ------------//
+    public function addProduct(){
+        return view('admin.product.add_product');
+    }
+
+    public function addProductPost(Request $request){
+
+        $product = new Product;
+        $product->product_weight = $request->product_weight;
+        $product->product_name = $request->product_name;
+        $product->product_price = $request->product_price;
+        $product->product_quantity = $request->product_quantity;
+        $product->pre_order_status = $request->pre_order_status;
+        if($request->hasfile('product_img'))
+        {
+            $file = $request->file('product_img');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time().".".$extension;
+            $file->move("Upload_image/", $filename);
+            $product->product_img_path = $filename;
+        }   
+        $product->save();
+        return view('admin.product.add_product');
+
     }
 }

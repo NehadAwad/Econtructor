@@ -28,9 +28,9 @@
           <!-- small box -->
           <div class="small-box bg-info">
             <div class="inner">
-              <h3> 1000</h3>
+              <h3>00</h3>
 
-              <p>Total Member</p>
+              <p>Total Order</p>
             </div>
             <div class="icon">
               <i class="ion ion-person-add"></i>
@@ -45,7 +45,7 @@
             <div class="inner">
               <h3></h3>
 
-              <p>Paid Amount</p>
+              <p></p>
             </div>
             <div class="icon">
               <i class="ion ion-stats-bars"></i>
@@ -60,7 +60,7 @@
             <div class="inner">
               <h3></h3>
 
-              <p>Total Due Amount</p>
+              <p></p>
             </div>
             <div class="icon">
               <i class="ion ion-cash"></i>
@@ -75,7 +75,7 @@
             <div class="inner">
               <h3></h3>
 
-              <p>Total Due Amount Monthly</p>
+              <p></p>
             </div>
             <div class="icon">
               <i class="ion ion-card"></i>
