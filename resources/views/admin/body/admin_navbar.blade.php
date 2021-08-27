@@ -60,7 +60,7 @@
                           this.closest('form').submit();">
               {{ __('Log Out') }}
           </x-jet-dropdown-link>
-      </form>
+        </form>
 
       </div>
     </li>

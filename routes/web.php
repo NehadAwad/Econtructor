@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserController;
+use PHPUnit\TextUI\XmlConfiguration\Group;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,9 +52,10 @@ Route::middleware(['auth:sanctum,admin', 'verified'])->prefix('admin')->name('ad
 });
 
 
-Route::middleware(['auth:sanctum,web', 'verified'])->get('/dashboard', function () {
-    return view('userDashboard');
-})->name('dashboard');
+// User
+Route::middleware(['auth:sanctum,web', 'verified'])->group(function(){
+    Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
+}); 
 
 Route::middleware(['auth:sanctum,web', 'verified'])->get('/test', function () {
     return view('test');
