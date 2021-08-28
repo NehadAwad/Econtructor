@@ -81,6 +81,14 @@
                         </div>
                         <!-- /.col -->
                     </div>
+
+                    <div class="row text-left">
+                        <div class="col-8">
+                            <a href="http://127.0.0.1:8000/"> User Login</a>
+
+                            </div>
+                        </div>
+
                 </form>
 
             </div>

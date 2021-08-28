@@ -22,6 +22,21 @@
     @yield('content')
     @include('user.master.footer')
 </body>
+
+<style>
+    .product-img{
+        height: 100px;
+        width: 80%;
+    } 
+    .product-item{
+        float: left;
+        margin: 22px;
+    }
+    .product-bar{
+        margin: 50px;
+    
+    }
+</style>
 <script>
 
 </script>
