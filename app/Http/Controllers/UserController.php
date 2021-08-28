@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Contracts\Auth\StatefulGuard;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Routing\Pipeline;
 use App\Actions\Fortify\AttemptToAuthenticate;
 use Laravel\Fortify\Actions\EnsureLoginIsNotThrottled;
@@ -34,7 +35,7 @@ class UserController extends Controller
 
     //product -details
     public function detail($id){
-
+        dd( Auth::user()->id);
         $product = Product::find($id);
         return view('user.product.detail', compact('product'));
     }

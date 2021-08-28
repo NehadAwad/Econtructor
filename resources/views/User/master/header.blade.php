@@ -45,12 +45,12 @@
           <li class=""><a href="#">Orders</a></li>
 
         </ul>
-        <form class="navbar-form navbar-left">
+        {{-- <form class="navbar-form navbar-left">
           <div class="form-group">
             <input type="text" class="form-control" placeholder="Search">
           </div>
           <button type="submit" class="btn btn-default">Submit</button>
-        </form>
+        </form> --}}
         <ul class="nav navbar-nav navbar-right">
           <li><a href="#">Cart(0)</a></li>  
           <li style="padding-top: 14px"><form method="POST" action="{{ route('logout') }}">
