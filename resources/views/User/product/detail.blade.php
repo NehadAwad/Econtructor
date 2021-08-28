@@ -12,7 +12,12 @@
             <h3>Price : {{ $product->product_price}}</h3>
             <h3>Weight : {{$product->product_weight}}</h3>
             <br><br>
-            <button class="btn btn-primary">Add to Cart</button>
+            <form action="/add_to_cart" method="post">
+                @csrf
+                <input type="hidden" name="product_id" id="" value="{{ $product->id}}">
+                <button class="btn btn-primary">Add to Cart</button>
+
+            </form>
             <br><br>
             <button class="btn btn-success">Buy Now</button>
             <br><br>

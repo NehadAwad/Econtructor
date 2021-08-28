@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Product;
+use App\Models\Cart;
 use App\Models\Offer;
 use App\Models\User;
 use Illuminate\Contracts\Auth\StatefulGuard;
@@ -35,8 +36,18 @@ class UserController extends Controller
 
     //product -details
     public function detail($id){
-        dd( Auth::user()->id);
+        //dd( Auth::user()->id);
         $product = Product::find($id);
+        //dd($product->id);
         return view('user.product.detail', compact('product'));
+    }
+
+    public function add_to_cart(Request $request){
+
+        $cart = new Cart;
+        $cart->user_id = Auth::user()->id;
+        $cart->product_id = $request->product_id;
+        $cart->save(); 
+        return redirect('/dashboard');
     }
 }

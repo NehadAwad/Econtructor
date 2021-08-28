@@ -60,8 +60,12 @@ Route::middleware(['auth:sanctum,web', 'verified'])->group(function(){
 
     //dashboard
     Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
+    
     //product - details
-    Route::get('/detail/{id}', [UserController::class, 'detail'])->name('dashboard');
+    Route::get('/detail/{id}', [UserController::class, 'detail'])->name('details');
+    
+    //cart 
+    Route::post('/add_to_cart', [UserController::class, 'add_to_cart'])->name('add_to_cart');
 
 }); 
 
