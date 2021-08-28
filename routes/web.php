@@ -19,6 +19,9 @@ use PHPUnit\TextUI\XmlConfiguration\Group;
 Route::get('/', function () {
     return view('user.login', ['guard' => 'web']);
 });
+// Route::get('/login', function () {
+//     return view('user.login');
+// });
 
 Route::group(['prefix' => 'admin', 'middleware'=> ['admin:admin']], function(){
     Route::get('/login', [AdminController::class, 'loginForm']);
