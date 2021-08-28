@@ -30,8 +30,9 @@ class UserController extends Controller
 {
     public function dashboard(){
         $products = Product::all();
+        $cartCount = Cart::where('user_id', Auth::user()->id)->count();
         
-        return view('user.dashboardUser', compact('products'));
+        return view('user.dashboardUser', compact('products', 'cartCount'));
     }
 
     //product -details
