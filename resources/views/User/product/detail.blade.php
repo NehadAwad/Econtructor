@@ -3,6 +3,11 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-6">
+            @if ($product->pre_order_status == 'Active')
+                <h1 style="color: red"> Pre Order Avialable </h1>
+            @else
+                
+            @endif
             <img  class="detail-img" src="{{ (!empty($product->product_img_path))?url('Upload_image/'
             .$product->product_img_path):url('storage/profile-photos/8o0QK4BIs6SkJESuPhm1N7adEo2eEG7HaIU224Yi.jpg') }}">        
         </div>

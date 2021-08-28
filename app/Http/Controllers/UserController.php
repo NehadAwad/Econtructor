@@ -32,13 +32,15 @@ class UserController extends Controller
     public function dashboard(){
         $products = Product::all();
         $cartCount = Cart::where('user_id', Auth::user()->id)->count();
+        $offer = Offer::find(1);
         
-        return view('user.dashboardUser', compact('products', 'cartCount'));
+        return view('user.dashboardUser', compact('products', 'cartCount','offer'));
     }
 
     //product -details
     public function detail($id){
         $product = Product::find($id);
+
         $cartCount = Cart::where('user_id', Auth::user()->id)->count();
         return view('user.product.detail', compact('product', 'cartCount'));
     }
@@ -48,6 +50,15 @@ class UserController extends Controller
         $cart = new Cart;
         $cart->user_id = Auth::user()->id;
         $cart->product_id = $request->product_id;
+        
+
+        $product = Product::find($request->product_id);
+        
+        //product inventiry check and pre-order check
+        if($product->product_quantity < 1 && $product->pre_order_status == 'Inactive'){
+            $cartCount = Cart::where('user_id', Auth::user()->id)->count();
+           return view('user.alert.add_cart_alert', compact('cartCount'));
+        }
         $cart->save(); 
         return redirect('/dashboard');
     }
