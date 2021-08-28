@@ -28,4 +28,26 @@
             <br><br>
         </div>
     </div>
+
+    
+
+    <div class="product-bar">
+        <h3>Recommend Product</h3>
+            
+      
+        @foreach ($recom as $a )
+            <div class="product-item">
+                <a href="/detail/{{ $a->id }}">
+                <img class="product-img" src="{{ (!empty($a->product_img_path))?url('Upload_image/'
+                .$a->product_img_path):url('storage/profile-photos/8o0QK4BIs6SkJESuPhm1N7adEo2eEG7HaIU224Yi.jpg') }}">
+                <div class="">
+                    <h3>Product Name : {{ $a->product_name }}</h3>
+                    <h3>Product Price : {{ $a->product_price }}</h3>
+                </div>
+                </a>
+            </div>
+            
+            
+        @endforeach
+    </div>
 @endsection

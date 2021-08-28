@@ -40,9 +40,13 @@ class UserController extends Controller
     //product -details
     public function detail($id){
         $product = Product::find($id);
+        $recom = Product::where('product_price', $product->product_price)
+                        ->get();
+    
+
 
         $cartCount = Cart::where('user_id', Auth::user()->id)->count();
-        return view('user.product.detail', compact('product', 'cartCount'));
+        return view('user.product.detail', compact('product', 'cartCount', 'recom'));
     }
 
     public function add_to_cart(Request $request){
