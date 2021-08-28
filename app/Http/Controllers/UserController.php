@@ -66,4 +66,15 @@ class UserController extends Controller
         Cart::destroy($id);
         return redirect('/cartlist');
     }
+
+    public function ordernow(){
+        $cartCount = Cart::where('user_id', Auth::user()->id)->count();
+
+        $total= DB::table('carts')
+        ->join('products', 'carts.product_id','=','products.id')
+        ->where('carts.user_id', Auth::user()->id)
+        ->sum('products.product_price');
+        
+        return view('user.order.ordernow', compact('total', 'cartCount'));
+    }
 }

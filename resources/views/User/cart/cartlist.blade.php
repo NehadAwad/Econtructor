@@ -4,9 +4,13 @@
     <div class="col-sm-4">
         <a href="#">Filter</a>
     </div>
+    
     <div class="col-sm-12">
         <div class="product-bar">
             <h3>Results for Products</h3>
+            <a href="/ordernow" class="btn btn-success">Oder Now</a>
+            <br><br>     
+
             @foreach ($products as $product )
                 <div class="row product-item cart-list-div">
                     <div class="col-sm-3">
