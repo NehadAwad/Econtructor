@@ -84,6 +84,13 @@ class UserController extends Controller
     }
 
     public function ordernow_post(Request $request){
+
+        // $total= DB::table('carts')
+        // ->join('products', 'carts.product_id','=','products.id')
+        // ->where('carts.user_id', Auth::user()->id)->get();
+        // dd($total->count());
+
+        //order data saving
         $order = new Order;
         $order->user_name = Auth::user()->name;
         $order->user_mobile = $request->user_mobile;
@@ -94,11 +101,27 @@ class UserController extends Controller
 
         $cartCount = Cart::where('user_id', Auth::user()->id)->count();
 
+        //total order amount
         $total= DB::table('carts')
         ->join('products', 'carts.product_id','=','products.id')
         ->where('carts.user_id', Auth::user()->id)
         ->sum('products.product_price');
-        dd('ok');
+        
+        //delivery
+        if($request->user_division == 'Dhaka'){
+            $delivery = 60;
+        }else{
+            $delivery = 100;
+        }
+        //offer check
+        $offer = Offer::find(1);
+
+        if($offer->offer_status == 'Active'){
+
+        }
+
+
+        return view('user.order.ordersubmit', compact('total', 'delivery','cartCount'));
 
     }
 }
