@@ -57,8 +57,13 @@ class UserController extends Controller
         $products= DB::table('carts')
         ->join('products', 'carts.product_id','=','products.id')
         ->where('carts.user_id', Auth::user()->id)
-        ->select('products.*')
+        ->select('products.*', 'carts.id as cart_id')
         ->get();
         return view('user.cart.cartlist', compact('products', 'cartCount'));
+    }
+
+    public function removecart($id){
+        Cart::destroy($id);
+        return redirect('/cartlist');
     }
 }

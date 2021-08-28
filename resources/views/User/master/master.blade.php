@@ -39,6 +39,11 @@
     .detail-img{
         height:300px;
     }
+    .cart-list-div{
+        border: 1px solid #ccc;
+        margin: 10px;
+        padding: 10px;
+    }
 </style>
 <script>
 

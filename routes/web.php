@@ -67,8 +67,8 @@ Route::middleware(['auth:sanctum,web', 'verified'])->group(function(){
     //cart 
     Route::post('/add_to_cart', [UserController::class, 'add_to_cart'])->name('add_to_cart');
     Route::get('/cartlist', [UserController::class, 'cartlist'])->name('cartlist');
-
-}); 
+    Route::get('/removecart/{id}', [UserController::class, 'removecart'])->name('removecart');
+});     
 
 Route::middleware(['auth:sanctum,web', 'verified'])->get('/test', function () {
     return view('test');
