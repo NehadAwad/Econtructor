@@ -37,10 +37,9 @@ class UserController extends Controller
 
     //product -details
     public function detail($id){
-        //dd( Auth::user()->id);
         $product = Product::find($id);
-        //dd($product->id);
-        return view('user.product.detail', compact('product'));
+        $cartCount = Cart::where('user_id', Auth::user()->id)->count();
+        return view('user.product.detail', compact('product', 'cartCount'));
     }
 
     public function add_to_cart(Request $request){
@@ -50,5 +49,16 @@ class UserController extends Controller
         $cart->product_id = $request->product_id;
         $cart->save(); 
         return redirect('/dashboard');
+    }
+
+    public function cartlist(){
+        $cartCount = Cart::where('user_id', Auth::user()->id)->count();
+
+        $products= DB::table('carts')
+        ->join('products', 'carts.product_id','=','products.id')
+        ->where('carts.user_id', Auth::user()->id)
+        ->select('products.*')
+        ->get();
+        return view('user.cart.cartlist', compact('products', 'cartCount'));
     }
 }
