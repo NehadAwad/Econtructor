@@ -20,13 +20,13 @@
               <tr>
         
                 <td>Offer Discount</td>
-                <td></td>
+                <td>{{ $discount}}</td>
  
               </tr>
               <tr>
  
                 <td>Total Amount</td>
-                <td>{{ $total+$delivery }}</td>
+                <td>{{ $total+$delivery-$discount }}</td>
       
               </tr>
             </tbody>
