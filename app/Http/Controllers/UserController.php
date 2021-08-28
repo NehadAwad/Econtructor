@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Cart;
+use App\Models\Order;
 use App\Models\Offer;
 use App\Models\User;
 use Illuminate\Contracts\Auth\StatefulGuard;
@@ -74,7 +75,30 @@ class UserController extends Controller
         ->join('products', 'carts.product_id','=','products.id')
         ->where('carts.user_id', Auth::user()->id)
         ->sum('products.product_price');
-        
+
+        // $test= DB::table('carts')
+        // ->join('products', 'carts.product_id','=','products.id')
+        // ->where('carts.user_id', Auth::user()->id)
+        // ->get();
         return view('user.order.ordernow', compact('total', 'cartCount'));
+    }
+
+    public function ordernow_post(Request $request){
+        $order = new Order;
+        $order->user_name = Auth::user()->name;
+        $order->user_mobile = $request->user_mobile;
+        $order->user_division = $request->user_division;
+        $order->user_address = $request->user_address;
+        $order->order_status = "Pending";
+        $order->save();
+
+        $cartCount = Cart::where('user_id', Auth::user()->id)->count();
+
+        $total= DB::table('carts')
+        ->join('products', 'carts.product_id','=','products.id')
+        ->where('carts.user_id', Auth::user()->id)
+        ->sum('products.product_price');
+        dd('ok');
+
     }
 }

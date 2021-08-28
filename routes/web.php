@@ -71,6 +71,8 @@ Route::middleware(['auth:sanctum,web', 'verified'])->group(function(){
 
     //order
     Route::get('/ordernow', [UserController::class, 'ordernow'])->name('order');
+    Route::post('/ordernow_post', [UserController::class, 'ordernow_post'])->name('ordernow_post');
+
 });     
 
 Route::middleware(['auth:sanctum,web', 'verified'])->get('/test', function () {

@@ -2,36 +2,20 @@
 @section('content')
 <!-- Main content -->
 <section class="content">
-    <form method="POST" action="/admin/add_product_post" enctype="multipart/form-data">
+    <form method="POST" action="/ordernow_post" enctype="multipart/form-data">
         @csrf
-        <h2 class="text-center mb-4 mt-4">Add Product</h2>
+        <h2 class="text-center mb-4 mt-4">Order Information</h2>
         <div class="container">
 
         <div class="col-12" style="background: #6fbbd3; border-radius: 5px;">
-            <div class="col-12">
+            <div class="col-10">
                <br>
+                
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="form-group mb-3">
-                            <label>Product Weight</label>
-                            <input type="text" name="product_weight" value="" id="product_weight" class="form-control">
-                        </div>
-                    </div>
-
-                </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="form-group mb-3">
-                            <label>Product Name</label>
-                            <input type="text" name="product_name" value="" id="product_name" class="form-control">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="form-group mb-3">
-                            <label>Price</label>
-                            <input type="text" name="product_price" value="" id="product_price" class="form-control">
+                            <label>Your Mobile No</label>
+                            <input type="text" name="user_mobile" value="" id="product_name" class="form-control">
                         </div>
                     </div>
                 </div>
@@ -39,34 +23,31 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="form-group mb-3">
-                            <label>Quantity</label>
-                            <input type="text" name="product_quantity" value="" id="product_quantity" class="form-control">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="form-group mb-3">
-                            <label>Pre Order Status</label>
-                                    <select name="pre_order_status" class="form-control">
-                                        <option value="Inactive">Inactive</option>
-                                        <option value="Active">Active</option>
+                            <label>Division</label>
+                                    <select name="user_division" class="form-control">
+                                        <option value="Dhaka">Dhaka</option>
+                                        <option value="Chattogram">Chattogram</option>
+                                        <option value="Barishal">Barishal</option>
+                                        <option value="Khulna">Khulna</option>
+                                        <option value="Rajshahi">Rajshahi</option>
+                                        <option value="Rangpur">Rangpur</option>
+                                        <option value="Mymensingh ">Mymensingh </option>
+                                        <option value="Sylhet">Sylhet</option>
                                     </select>
                         </div>
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="form-group mb-3">
-                            <label>Product Image</label>
-                            <input type="file" name="product_img" id="product_img" class="form-control">
-                        </div>  
+                            <label>Address</label>
+                            <input type="text" name="user_address" value="" id="user_address" class="form-control">
+                        </div>
                     </div>
                 </div>
-                
 
-            
+                
 
                
             <div class="row text-center mt-4">

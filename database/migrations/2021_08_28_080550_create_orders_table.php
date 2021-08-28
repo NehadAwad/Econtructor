@@ -17,6 +17,7 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->string('user_name')->nullable();
             $table->string('user_mobile')->nullable();
+            $table->string('user_division')->nullable();
             $table->string('user_address')->nullable();
             $table->string('order_status')->nullable();
             $table->timestamps();
