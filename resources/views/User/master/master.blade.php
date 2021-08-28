@@ -36,6 +36,9 @@
         margin: 50px;
     
     }
+    .detail-img{
+        height:300px;
+    }
 </style>
 <script>
 

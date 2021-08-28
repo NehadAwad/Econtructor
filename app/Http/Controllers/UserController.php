@@ -31,4 +31,11 @@ class UserController extends Controller
         
         return view('user.dashboardUser', compact('products'));
     }
+
+    //product -details
+    public function detail($id){
+
+        $product = Product::find($id);
+        return view('user.product.detail', compact('product'));
+    }
 }

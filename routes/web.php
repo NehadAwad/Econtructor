@@ -57,7 +57,12 @@ Route::middleware(['auth:sanctum,admin', 'verified'])->prefix('admin')->name('ad
 
 // User
 Route::middleware(['auth:sanctum,web', 'verified'])->group(function(){
+
+    //dashboard
     Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
+    //product - details
+    Route::get('/detail/{id}', [UserController::class, 'detail'])->name('dashboard');
+
 }); 
 
 Route::middleware(['auth:sanctum,web', 'verified'])->get('/test', function () {
