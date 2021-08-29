@@ -84,8 +84,8 @@ class UserController extends Controller
     }
 
     public function ordernow(){
+        
         $cartCount = Cart::where('user_id', Auth::user()->id)->count();
-
         $total= DB::table('carts')
         ->join('products', 'carts.product_id','=','products.id')
         ->where('carts.user_id', Auth::user()->id)
@@ -95,6 +95,8 @@ class UserController extends Controller
         // ->join('products', 'carts.product_id','=','products.id')
         // ->where('carts.user_id', Auth::user()->id)
         // ->get();
+      
+        
         return view('user.order.ordernow', compact('total', 'cartCount'));
     }
 
@@ -111,7 +113,7 @@ class UserController extends Controller
         $order->order_status = "Pending";
        
 
-        $cartCount = Cart::where('user_id', Auth::user()->id)->count();
+       
 
         //total order amount
         $total= DB::table('carts')
@@ -125,14 +127,16 @@ class UserController extends Controller
         }else{
             $delivery = 100;
         }
+
         //offer check
         $offer = Offer::find(1);
 
+        //total order product count
         $total_count= DB::table('carts')
         ->join('products', 'carts.product_id','=','products.id')
         ->where('carts.user_id', Auth::user()->id)->get()->count();
         
-
+        //offer active and product count
         if($offer->offer_status == 'Active' && $total_count >= $offer->offer_quantity){
            $discount = $offer->discount;
         }else{
@@ -141,6 +145,10 @@ class UserController extends Controller
 
         $order->price = $total+$delivery-$discount;
         $order->save();
+
+        //after order remove cart product
+        Cart::where('user_id',Auth::user()->id)->delete();
+        $cartCount = Cart::where('user_id', Auth::user()->id)->count();
         return view('user.order.ordersubmit', compact('total', 'delivery','cartCount', 'discount'));
 
     }
